@@ -36,9 +36,17 @@ function getData(num = 0, search = "") {
 //after searching broadly, can use ein Number to get data if we add an event listner that checks this function
 //A LOT MORE DATA here - can dig into the most recent year with data, or without data and show the .pdf of the tax return for the most recent year?
 function searchByEIN(einNumber) {
-   fetch(`https://projects.propublica.org/nonprofits/api/v2/organizations/${einNumber}.json`)
+   return fetch(`https://projects.propublica.org/nonprofits/api/v2/organizations/${einNumber}.json`)
       .then(res => res.json())
-      .then(console.log)
+      .then(data => data)
+}
+
+function displayTaxPdf(einNumber) {
+   searchByEIN(einNumber).then(data => {
+      console.log(data.filings_without_data[0].tax_prd_yr)
+      console.log(data.filings_without_data[0].pdf_url)
+      document.querySelector("#taxPDF").src = data.filings_without_data[0].pdf_url
+   })
 }
 
 // THIS WORKS! can pass our own ID to the server
@@ -115,6 +123,8 @@ function renderCharityLi(charity) {
             data.comments.forEach(getPreviousComments)
          }
       })
+
+      displayTaxPdf(charity.ein)
 
       document.querySelector("h2.name").textContent = charityLi.name
       document.querySelector("h3.score").textContent = score
@@ -195,8 +205,13 @@ function getComments() {
       li.textContent = userComment
       li.className = "liComment"
       document.querySelector("#commentBox").append(li)
+      //trying to maintain persistence
+      let commentsArr = Array.from(document.querySelectorAll(".liComment"))
+      console.log(commentsArr.slice(1))
    })
 }
+
+function patchComments(id, commentsInArr) {}
 
 function nothingFoundFunctionSilly() {
    const searchArrResults = [

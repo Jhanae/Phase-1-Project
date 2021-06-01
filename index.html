@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script defer src="app.js"></script>
+      <link rel="stylesheet" href="style.css" />
+      <title>Testing Data from ProPublica</title>
+   </head>
+   <body>
+      <header>
+         <h1>DC Arts, Culture, and Humanities 501c(3) Organizations</h1>
+      </header>
+
+      <div id="orgDetails">
+         <img src="charity img.jpg" alt="image type associated with organization or type of org?" />
+         <hr />
+         <h2 class="name">Giving is not about making a donation.</h2>
+         <p class="image"></p>
+         <h3 class="score">It is about making a difference</h3>
+         <form class="rating">
+            <h5>Have you ever or will you donate to this charity?</h5>
+            <input type="radio" name="choice" value="yes"> Yes
+            <input type="radio" name="choice" value="no"> No
+        </form>
+         <hr />
+         <h4>Leave a comment or suggestion</h4>
+         <ul id="commentBox">
+         <li class="noComment">No comments yet</li>
+         </ul>
+         <h3>Comments Box:</h3>
+         <form class="comments">
+            <input class="input" type="text" />
+            <input type="submit" />
+         </form>
+      </div>
+      <div>
+         <p>Total :<span class="total">"# of charities from return goes here"</span></p>
+         <h3>Search Charities</h3>
+         <form id="charitySearch">
+            <input type="text" name="charitySearch" />
+            <input type="submit" />
+         </form>
+      </div>
+      <!-- <button>Next Page</button><button>Previous Page</button> -->
+      <ul id="organizationList"></ul>
+
+      <button>Next Page</button><button>Previous Page</button>
+
+      <p>Results provided by ProPublica open API</p>
+      <footer>
+         <div>
+            <h4>Contact Info: Jhanae@emailLoc.com and Grant@emailLoc.com!</h4>
+         </div>
+      </footer>
+   </body>
+</html>

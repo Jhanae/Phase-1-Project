@@ -1,0 +1,57 @@
+html {
+    font-size: 16px;
+    /* background: burlywood; */
+ 
+ }
+ 
+ body {
+    margin: 0 auto;
+    text-align: center;
+    background-color:cornsilk;
+ }
+ 
+ header {
+    background: cornsilk
+ }
+ 
+ img {
+    width: 200px;
+    height: 300px;
+  }
+ 
+ h1 {
+    color: blue;
+ }
+ 
+ #orgDetails {
+    border: 1px solid black;
+ }
+ 
+ #organizationList {
+    list-style-type: none;
+ }
+ 
+ .charityLi {
+    margin: 0.8rem;
+ }
+ 
+ .nameSpan {
+    color: blue;
+    cursor: pointer;
+    font-size: 1.3rem;
+ }
+ 
+ .einSpan {
+    color: cadetblue;
+ }
+ 
+ .nteeSpan {
+    color: purple;
+ }
+ .container
+ {
+     margin-left: auto;
+     margin-right: auto;
+     width: 50em;
+     text-align: left;
+ }

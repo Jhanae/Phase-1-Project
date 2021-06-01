@@ -43,7 +43,7 @@ function searchByEIN(einNumber) {
 
 // THIS WORKS! can pass our own ID to the server
 
-//function doThisThing() {
+// function postData() {
 //    let testCharity = { id: 84955729, name: "Cool Charity Name" }
 
 //    let configObj = {
@@ -56,6 +56,12 @@ function searchByEIN(einNumber) {
 //       .then(r => r.json())
 //       .then(console.log)
 // }
+
+function getOurDataForACharity(id) {
+   return fetch(`http://localhost:3000/charities/${id}`)
+      .then(r => r.json())
+      .then(data => data)
+}
 
 // doThisThing()
 
@@ -102,8 +108,13 @@ function renderCharityLi(charity) {
    charityLi.classList.add("charityLi")
    charityLi.innerHTML = `<span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span>`
    charityLi.addEventListener("click", e => {
-      console.log(`This Charity's name is ${name}, and EIN is ${ein}`)
-      e.preventDefault()
+      console.log(`This Charity's name is ${charityLi.name}, and EIN is ${ein}`)
+
+      getOurDataForACharity(charityLi.id).then(data => {
+         if (data.comments.length > 0) {
+            data.comments.forEach(getPreviousComments)
+         }
+      })
 
       document.querySelector("h2.name").textContent = charityLi.name
       document.querySelector("h3.score").textContent = score
@@ -115,6 +126,16 @@ function renderCharityLi(charity) {
       getImage(charityType)
    })
    document.querySelector("#organizationList").append(charityLi)
+}
+
+function getPreviousComments(comment) {
+   let userComment = comment
+   document.querySelector(".noComment").style.display = "none"
+
+   let li = document.createElement("li")
+   li.textContent = userComment
+   li.className = "liComment"
+   document.querySelector("#commentBox").append(li)
 }
 
 function searchEventButton() {

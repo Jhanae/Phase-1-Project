@@ -60,3 +60,18 @@ h1 {
    width: 50em;
    text-align: left;
 }
+.star {
+   font-size: 30px;
+   color: #cfcfcf;
+   display: inline-block;
+}
+.over {
+   color: #f7c56a;
+}
+.fix {
+   color: #ffa600;
+}
+.rating {
+   margin: 30px 0;
+   font-weight: bold;
+}

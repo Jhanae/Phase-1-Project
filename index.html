@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <script defer src="app.js"></script>
       <link rel="stylesheet" href="style.css" />
+      <script src="https://kit.fontawesome.com/baaf7967b3.js" crossorigin="anonymous"></script>
       <title>Testing Data from ProPublica</title>
    </head>
    <body>
@@ -25,6 +26,7 @@
             <img class="charityType" src="donate.png" />
          </p>
          <h3 class="score">It is about making a difference</h3>
+
          <hr />
          <div id="hiddenComment">
             <embed
@@ -39,16 +41,27 @@
                <input type="radio" name="choice" value="yes" /> Yes
                <input type="radio" name="choice" value="no" /> No
             </form>
-            <h4>Leave a comment or suggestion</h4>
-            <ul id="commentBox">
-               <li class="noComment liComment">No comments yet</li>
+            <!-- start here -->
+            <h2 class="Star-rating">Star Rating</h2>
+            <ul class="Star-rating">
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
             </ul>
-            <h3>Comments Box:</h3>
-            <form class="comments">
-               <input class="input" type="text" />
-               <input type="submit" />
-            </form>
+            <div class="ratingStar"></div>
+            <!-- end here-->
          </div>
+         <h4>Leave a comment or suggestion</h4>
+         <ul id="commentBox">
+            <li class="noComment liComment">No comments yet</li>
+         </ul>
+         <h3>Comments Box:</h3>
+         <form class="comments">
+            <input class="input" type="text" />
+            <input type="submit" />
+         </form>
       </div>
       <div>
          <p>Total :<span class="total">Search Results</span></p>

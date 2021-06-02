@@ -43,9 +43,14 @@ function searchByEIN(einNumber) {
 
 function displayTaxPdf(einNumber) {
    searchByEIN(einNumber).then(data => {
-      console.log(data.filings_without_data[0].tax_prd_yr)
-      console.log(data.filings_without_data[0].pdf_url)
-      document.querySelector("#taxPDF").src = data.filings_without_data[0].pdf_url
+      console.log(data)
+      console.log(data.filings_without_data.length)
+      if (data.filings_without_data.length === 0) {
+         let emptyTax = "emptyTax.pdf"
+         document.querySelector("#taxPDF").src = emptyTax
+      } else {
+         document.querySelector("#taxPDF").src = data.filings_without_data[0].pdf_url
+      }
    })
 }
 

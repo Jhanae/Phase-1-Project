@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <script defer src="app.js"></script>
       <link rel="stylesheet" href="style.css" />
+      <script src="https://kit.fontawesome.com/baaf7967b3.js" crossorigin="anonymous"></script>
       <title>Testing Data from ProPublica</title>
    </head>
    <body>
@@ -14,39 +15,64 @@
       </header>
 
       <div id="orgDetails">
-         <img src="charity img.jpg" alt="image type associated with organization or type of org?" />
+         <img
+            src="charity img.jpg"
+            class="image"
+            alt="image type associated with organization or type of org?"
+         />
          <hr />
          <h2 class="name">Giving is not about making a donation.</h2>
-         <p class="image"></p>
+         <p class="image">
+            <img class="charityType" src="donate.png" />
+         </p>
          <h3 class="score">It is about making a difference</h3>
-         <form class="rating">
-            <h5>Have you ever or will you donate to this charity?</h5>
-            <input type="radio" name="choice" value="yes"> Yes
-            <input type="radio" name="choice" value="no"> No
-        </form>
+
          <hr />
-         <h4>Leave a comment or suggestion</h4>
-         <ul id="commentBox">
-         <li class="noComment">No comments yet</li>
-         </ul>
-         <h3>Comments Box:</h3>
-         <form class="comments">
-            <input class="input" type="text" />
-            <input type="submit" />
-         </form>
-      </div>
+         <div id="hiddenComment">
+            <embed
+               id="taxPDF"
+               src="emptyTax.pdf"
+               type="application/pdf"
+               width="450"
+               height="320px"
+            />
+            <form class="rating">
+               <h5>Have you ever or will you donate to this charity?</h5>
+               <input type="radio" name="choice" value="yes" /> Yes
+               <input type="radio" name="choice" value="no" /> No
+            </form>
+            <!-- start here -->
+            <h2 class="Star-rating">Star Rating</h2>
+            <ul class="Star-rating">
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+               <li class="star"><i class="fas fa-star"></i></li>
+            </ul>
+            <div class="ratingStar"></div>
+            <!-- end here-->
+            <h4>Leave a comment or suggestion</h4>
+            <ul id="commentBox">
+               <li class="noComment liComment">No comments yet</li>
+            </ul>
+            <h3>Comments Box:</h3>
+            <form class="comments">
+               <input class="input" type="text" />
+               <input type="submit" />
+            </form>
+               </div>
+               <hr>
       <div>
-         <p>Total :<span class="total">"# of charities from return goes here"</span></p>
+         <p>Total :<span class="total">Search Results</span></p>
          <h3>Search Charities</h3>
          <form id="charitySearch">
             <input type="text" name="charitySearch" />
             <input type="submit" />
          </form>
       </div>
-      <!-- <button>Next Page</button><button>Previous Page</button> -->
-      <ul id="organizationList"></ul>
 
-      <button>Next Page</button><button>Previous Page</button>
+      <ul id="organizationList"></ul>
 
       <p>Results provided by ProPublica open API</p>
       <footer>

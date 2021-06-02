@@ -137,6 +137,14 @@ function renderCharityLi(charity) {
       let charityType = ntee_code.charAt(1)
       console.log(charityType)
       getImage(charityType)
+      document.querySelector(".rating").reset()
+      document.querySelector(".comments").reset()
+      document.querySelector(".ratingStar").textContent = ""
+
+      document.querySelectorAll(".star").forEach(star => {
+         star.classList.remove("fix")
+         star.classList.remove("over")
+      })
    })
    document.querySelector("#organizationList").append(charityLi)
 }
@@ -245,10 +253,10 @@ for (let i = 0; i < stars.length; i++) {
 function starRate(e) {
    let type = e.type
    let starValue = this.starValue
-   console.log(starValue)
+
    if (type === "click") {
       if (starValue > 0) {
-         rating.innerHTML = "You rated this " + starValue + " stars"
+         rating.textContent = "You rated this " + starValue + " stars"
       }
    }
    stars.forEach(function (ele, ind) {

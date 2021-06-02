@@ -116,7 +116,7 @@ function renderCharityLi(charity) {
    charityLi.ntee_code = ntee_code
    charityLi.score = score
    charityLi.name = sanitizeName(name)
-   charityLi.classList.add("charityLi")
+   charityLi.classList.add("charityLi", "list-group-item")
    charityLi.innerHTML = `<span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span>`
    charityLi.addEventListener("click", e => {
       console.log(`This Charity's name is ${charityLi.name}, and EIN is ${ein}`)
@@ -130,7 +130,7 @@ function renderCharityLi(charity) {
       displayTaxPdf(charity.ein)
 
       document.querySelector("h2.name").textContent = charityLi.name
-      document.querySelector("h3.score").textContent = score
+      document.querySelector("h3.score").textContent = `Score: ${score}`
 
       document.querySelector("#hiddenComment").style.display = "block"
 

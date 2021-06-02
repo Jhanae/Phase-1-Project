@@ -3,22 +3,53 @@ html {
 }
 
 body {
-   margin: 0 auto;
    text-align: center;
-   background-color: snow;
+   background-color: rgb(252, 236, 236);
+   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 header {
-   background: snow;
+   color: black;
+
+   background-image: url("https://images.unsplash.com/photo-1569437061233-5befcf96ee45?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3750&q=80");
+   background-size: 100%;
+   background-repeat: no-repeat;
+   padding: 100px 100px;
+   opacity: 0.8;
+}
+footer {
+   color: black;
+
+   background-image: url("https://images.unsplash.com/photo-1569437061233-5befcf96ee45?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3750&q=80");
+   background-size: 100%;
+   background-repeat: no-repeat;
+   padding: 50px 50px;
+   opacity: 0.8;
+   position: relative;
+   bottom: 0;
+}
+
+#search {
+   display: inline-block;
+   align-content: center;
+   max-width: 50%;
+}
+
+h4 {
+   font-weight: bold;
 }
 
 img {
+   margin-top: 20px;
    width: 200px;
    height: 300px;
+   border-radius: 15px;
+   border: 5px groove black;
 }
 
 h1 {
-   color: rgb(162, 1, 33);
+   color: black;
+   font-weight: bold;
 }
 
 #orgDetails {
@@ -38,7 +69,15 @@ h1 {
 }
 
 .charityLi {
-   margin: 0.8rem;
+   /* margin: 0.8rem; */
+   padding: 0.5rem;
+   transition: 0.5s;
+   border-radius: 15px;
+}
+
+.charityLi:hover {
+   transform: translate(10px, -5px);
+   text-shadow: -3px 2px 8px #1c6ea4;
 }
 
 .nameSpan {

@@ -117,10 +117,8 @@ function renderCharityLi(charity) {
    charityLi.score = score
    charityLi.name = sanitizeName(name)
    charityLi.classList.add("charityLi", "list-group-item")
-   charityLi.innerHTML = `<span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span>`
+   charityLi.innerHTML = `<a href="#orgDetails"> <span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span> </a>`
    charityLi.addEventListener("click", e => {
-      console.log(`This Charity's name is ${charityLi.name}, and EIN is ${ein}`)
-
       getOurDataForACharity(charityLi.id).then(data => {
          if (data.comments.length > 0) {
             data.comments.forEach(getPreviousComments)

@@ -81,7 +81,13 @@ h1 {
 }
 
 .liComment {
+   text-align: justify;
    list-style-type: none;
+   padding: 0.5rem;
+   background: white;
+   border: 1px rgb(249, 239, 239) solid;
+   margin: 0.2rem;
+   border-radius: 10px;
 }
 
 #organizationList {

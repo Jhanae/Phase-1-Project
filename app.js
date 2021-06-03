@@ -214,7 +214,7 @@ function getComments() {
 function nothingFoundFunctionSilly() {
    const searchArrResults = [
       "Nadda - try again.",
-      "We don't have anything like that ..",
+      "We don't have anything like that ...",
       "Nothing to see here.",
       "Pretty sure that doesn't exist - try something else.",
       "Try saying: 'Alexa, will you find want I want?'",

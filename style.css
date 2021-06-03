@@ -15,8 +15,21 @@ header {
    background-size: 100%;
    background-repeat: no-repeat;
    padding: 100px 100px;
-   opacity: 0.8;
+   opacity: 0.75;
 }
+
+#logo {
+   height: 30%;
+   width: 30%;
+   border: 1px groove black;
+   opacity: 0.95;
+   border-radius: 50%;
+}
+
+.name {
+   margin: 15px;
+}
+
 footer {
    color: black;
 
@@ -29,10 +42,35 @@ footer {
    bottom: 0;
 }
 
+.taxPDF {
+   height: 90%;
+   width: 70%;
+}
+
+#input {
+   display: inline;
+   align-content: center;
+   max-width: 50%;
+   padding: 1rem;
+}
+
+.btn {
+   transition: 0.8s;
+}
+
+.btn:hover {
+   transform: translate(1px, -1px);
+   background-color: rgb(0, 97, 97);
+   border-radius: 10px;
+   -webkit-box-shadow: -8px 13px 21px 0px rgba(0, 0, 0, 0.49);
+   box-shadow: -8px 13px 21px 0px rgba(0, 0, 0, 0.49);
+}
+
 #search {
    display: inline-block;
    align-content: center;
    max-width: 50%;
+   margin-bottom: 15px;
 }
 
 h4 {
@@ -41,10 +79,10 @@ h4 {
 
 img {
    margin-top: 20px;
-   width: 200px;
-   height: 300px;
+   width: 25%;
+   height: 25%;
    border-radius: 15px;
-   border: 5px groove black;
+   border: 3px groove black;
 }
 
 h1 {
@@ -60,8 +98,46 @@ h1 {
    display: none;
 }
 
-.liComment {
+.noComment {
    list-style-type: none;
+}
+
+@keyframes wiggle {
+   0% {
+      transform: rotate(0deg);
+   }
+   10% {
+      transform: rotate(0deg);
+   }
+   15% {
+      transform: rotate(1.5deg);
+   }
+   20% {
+      transform: rotate(-1.5deg);
+   }
+   35% {
+      transform: rotate(0deg);
+   }
+}
+
+.noResults {
+   margin: 15px;
+   font-size: 2rem;
+   list-style-type: none;
+   padding: 0.5rem;
+   background: white;
+   border: 1px rgb(249, 239, 239) solid;
+   animation: wiggle 1s;
+}
+
+.liComment {
+   text-align: justify;
+   list-style-type: none;
+   padding: 0.5rem;
+   background: white;
+   border: 1px rgb(249, 239, 239) solid;
+   margin: 0.2rem;
+   border-radius: 10px;
 }
 
 #organizationList {

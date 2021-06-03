@@ -52,30 +52,6 @@ function displayTaxPdf(einNumber) {
    })
 }
 
-// THIS WORKS! can pass our own ID to the server
-
-// function postData() {
-//    let testCharity = { id: 84955729, name: "Cool Charity Name" }
-
-//    let configObj = {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(testCharity),
-//    }
-
-//    fetch("http://localhost:3000/charities", configObj)
-//       .then(r => r.json())
-//       .then(console.log)
-// }
-
-function getOurDataForACharity(id) {
-   return fetch(`http://localhost:3000/charities/${id}`)
-      .then(r => r.json())
-      .then(data => data)
-}
-
-// doThisThing()
-
 const sanitizeName = rawNameOfCharity => {
    let copyArr = [...rawNameOfCharity.split(" ")]
    let sanitizeArr = []
@@ -118,13 +94,20 @@ function renderCharityLi(charity) {
    charityLi.name = sanitizeName(name)
    charityLi.classList.add("charityLi", "list-group-item")
    charityLi.innerHTML = `<a href="#orgDetails"> <span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span> </a>`
-   charityLi.addEventListener("click", e => {
-      getOurDataForACharity(charityLi.id).then(data => {
-         if (data.comments.length > 0) {
-            data.comments.forEach(getPreviousComments)
-         }
-      })
 
+   //getOurDataByCharityName(charityLi.name)
+   charityLi.addEventListener("click", e => {
+      document.querySelector(".noComment").style.display = "block"
+      document.querySelector(".rating").reset()
+      document.querySelector(".comments").reset()
+      document.querySelector(".ratingStar").textContent = ""
+      if (document.querySelectorAll(".liComment").length > 0) {
+         document.querySelectorAll(".liComment").forEach(child => child.remove())
+      }
+      document.querySelectorAll(".star").forEach(star => {
+         star.classList.remove("fix")
+         star.classList.remove("over")
+      })
       displayTaxPdf(charity.ein)
 
       document.querySelector("h2.name").textContent = charityLi.name
@@ -135,13 +118,18 @@ function renderCharityLi(charity) {
       let charityType = ntee_code.charAt(1)
       console.log(charityType)
       getImage(charityType)
-      document.querySelector(".rating").reset()
-      document.querySelector(".comments").reset()
-      document.querySelector(".ratingStar").textContent = ""
 
-      document.querySelectorAll(".star").forEach(star => {
-         star.classList.remove("fix")
-         star.classList.remove("over")
+      let submitButton = document.querySelector(".charityInfo")
+      submitButton.ein = charityLi.ein
+      submitButton.name = charityLi.name
+      console.log(submitButton.name, submitButton.ein)
+
+      getOurDataForACharity(charityLi.id).then(data => {
+         if (data.comments.length > 0) {
+            data.comments.forEach(getPreviousComments)
+         } else {
+            document.querySelector(".noComment").style.display = "block"
+         }
       })
    })
    document.querySelector("#organizationList").append(charityLi)
@@ -206,7 +194,7 @@ function getImage(type) {
 function getComments() {
    document.querySelector("form.comments").addEventListener("submit", e => {
       e.preventDefault()
-
+      let submitButton = document.querySelector(".charityInfo")
       let userComment = document.querySelector(".input").value
       document.querySelector(".noComment").style.display = "none"
 
@@ -214,9 +202,17 @@ function getComments() {
       li.textContent = userComment
       li.className = "liComment"
       document.querySelector("#commentBox").append(li)
-      //trying to maintain persistence
+
+      let allComments = []
       let commentsArr = Array.from(document.querySelectorAll(".liComment"))
-      console.log(commentsArr.slice(1))
+      commentsArr.forEach(comm => allComments.push(comm.textContent))
+
+      if (document.querySelectorAll(".liComment").length === 1) {
+         postData(submitButton.name, submitButton.ein, userComment)
+      } else {
+         patchData(submitButton.name, submitButton.ein, allComments)
+      }
+      //trying to maintain persistence
    })
 }
 

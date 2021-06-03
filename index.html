@@ -4,18 +4,20 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script defer src="json.js"></script>
       <script defer src="app.js"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
       <link rel="stylesheet" href="style.css" />
       <script src="https://kit.fontawesome.com/baaf7967b3.js" crossorigin="anonymous"></script>
-      
-      <title>Testing Data from ProPublica</title>
+      <title>giveDC</title>
    </head>
+ 
    <body>
+      <div class="container"></div>
       <header>
-         <h1>DC Arts, Culture, and Humanities 501c(3) Organizations</h1>
+         <img id="logo" src="./dcLogo.png" alt="logo" class="img-fluid" >
       </header>
-
+      
       <div id="orgDetails">
         
          <hr />
@@ -52,17 +54,17 @@
             <!-- end here-->
             <h4>Leave a comment or suggestion</h4>
             <ul id="commentBox">
-               <li class="noComment liComment">No comments yet</li>
+               <li class="noComment">No comments yet</li>
             </ul>
             <h3>Comments Box:</h3>
             <form class="comments">
                <input class="input" type="text" />
-               <input type="submit" class="btn btn-dark" />
+               <input type="submit" class="btn btn-dark charityInfo" />
             </form>
                </div>
                <hr>
       <div>
-         <p>Total :<span class="total">Search Results</span></p>
+         <p>Total: <span class="total">Search Results</span></p>
          <h3>Search Charities</h3>
         
        
@@ -76,7 +78,7 @@
 
       <ul class="" id="organizationList"></ul>
  
-      <p>Results provided by ProPublica open API</p>
+      <p>Results provided by ProPublica's Open API</p>
       <footer >
          <div>
             <h4>Contact Info: Jhanae@emailLoc.com and Grant@emailLoc.com!</h4>

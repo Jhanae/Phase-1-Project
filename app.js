@@ -2,10 +2,9 @@
 //just DC, arts culture and humanities, 501C(3)
 
 //this function lets you search by page number (50 results per page), or by search by words (997 items for this one - I think that could be manageable)
-// Also, with this we can use a submit to do most of the filtering on the api side and probably not even need to implement filter on ours
-//to test it out can use the getData example below
 
 function init() {
+   //initial get data is taken out for cleaner start-up state
    // getData(0, "").then(data => data.organizations.forEach(renderCharityLi))
    searchEventButton()
    getComments()
@@ -34,7 +33,7 @@ function getData(num = 0, search = "") {
 }
 
 //after searching broadly, can use ein Number to get data if we add an event listner that checks this function
-//A LOT MORE DATA here - can dig into the most recent year with data, or without data and show the .pdf of the tax return for the most recent year?
+
 function searchByEIN(einNumber) {
    return fetch(`https://projects.propublica.org/nonprofits/api/v2/organizations/${einNumber}.json`)
       .then(res => res.json())
@@ -95,7 +94,6 @@ function renderCharityLi(charity) {
    charityLi.classList.add("charityLi", "list-group-item")
    charityLi.innerHTML = `<a href="#orgDetails"> <span class="nameSpan"> ${charityLi.name} </span>     ||     <span class="einSpan"> EIN : ${ein} </span>  ||  <span class= "nteeSpan"> CODE/TYPE : ${ntee_code} </span> </a>`
 
-   //getOurDataByCharityName(charityLi.name)
    charityLi.addEventListener("click", e => {
       document.querySelector(".noComment").style.display = "block"
       document.querySelector(".rating").reset()
@@ -122,7 +120,6 @@ function renderCharityLi(charity) {
       let submitButton = document.querySelector(".charityInfo")
       submitButton.ein = charityLi.ein
       submitButton.name = charityLi.name
-      console.log(submitButton.name, submitButton.ein)
 
       getOurDataForACharity(charityLi.id).then(data => {
          if (data.comments.length > 0) {
@@ -149,7 +146,6 @@ function searchEventButton() {
    document.querySelector("#charitySearch").addEventListener("submit", e => {
       e.preventDefault()
       document.querySelector("#organizationList").innerHTML = ""
-      console.log(e.target.charitySearch.value)
       searchByName(e.target.charitySearch.value)
    })
 }
@@ -212,11 +208,8 @@ function getComments() {
       } else {
          patchData(submitButton.name, submitButton.ein, allComments)
       }
-      //trying to maintain persistence
    })
 }
-
-function patchComments(id, commentsInArr) {}
 
 function nothingFoundFunctionSilly() {
    const searchArrResults = [

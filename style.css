@@ -8,13 +8,6 @@ body {
    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-/* @media screen (width: 700px) {
-   #logo {
-      width: 5rem;
-      height: 5rem;
-   },
-} */
-
 header {
    color: black;
 
@@ -87,6 +80,34 @@ h1 {
 
 .noComment {
    list-style-type: none;
+}
+
+@keyframes wiggle {
+   0% {
+      transform: rotate(0deg);
+   }
+   10% {
+      transform: rotate(0deg);
+   }
+   15% {
+      transform: rotate(1.5deg);
+   }
+   20% {
+      transform: rotate(-1.5deg);
+   }
+   35% {
+      transform: rotate(0deg);
+   }
+}
+
+.noResults {
+   margin: 15px;
+   font-size: 2rem;
+   list-style-type: none;
+   padding: 0.5rem;
+   background: white;
+   border: 1px rgb(249, 239, 239) solid;
+   animation: wiggle 1s;
 }
 
 .liComment {

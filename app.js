@@ -25,7 +25,7 @@ function getData(num = 0, search = "") {
 
    //just console log for now - would need to be switched to return data and remove console.log on 22
    return fetch(
-      `https://projects.propublica.org/nonprofits/api/v2/search.json?${searchTerm}&state%5Bid%5D=DC&ntee%5Bid%5D=1&page=${pageNum}&c_code%5Bid%5D=3`
+      `https://cors-anywhere.herokuapp.com/https://projects.propublica.org/nonprofits/api/v2/search.json?${searchTerm}&state%5Bid%5D=DC&ntee%5Bid%5D=1&page=${pageNum}&c_code%5Bid%5D=3`
    )
       .then(r => r.json())
       .then(data => data)
@@ -35,7 +35,9 @@ function getData(num = 0, search = "") {
 //after searching broadly, can use ein Number to get data if we add an event listner that checks this function
 
 function searchByEIN(einNumber) {
-   return fetch(`https://projects.propublica.org/nonprofits/api/v2/organizations/${einNumber}.json`)
+   return fetch(
+      `https://cors-anywhere.herokuapp.com/https://projects.propublica.org/nonprofits/api/v2/organizations/${einNumber}.json`
+   )
       .then(res => res.json())
       .then(data => data)
 }
@@ -114,7 +116,7 @@ function renderCharityLi(charity) {
       document.querySelector("#hiddenComment").style.display = "block"
 
       let charityType = ntee_code.charAt(1)
-      console.log(charityType)
+
       getImage(charityType)
 
       let submitButton = document.querySelector(".charityInfo")
@@ -162,7 +164,6 @@ function searchByName(searchTerm) {
 }
 
 function getImage(type) {
-   console.log(type)
    switch (type) {
       case "0":
       case "1":
@@ -193,9 +194,13 @@ function getComments() {
       let submitButton = document.querySelector(".charityInfo")
       let userComment = document.querySelector(".input").value
       document.querySelector(".noComment").style.display = "none"
+      let postTime = new Date()
+      postTime = ` - posted ${
+         postTime.getMonth() + 1
+      }/${postTime.getDay()}/${postTime.getFullYear()}`
 
       let li = document.createElement("li")
-      li.textContent = userComment
+      li.textContent = userComment + postTime
       li.className = "liComment"
       document.querySelector("#commentBox").append(li)
 
